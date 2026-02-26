@@ -1,8 +1,11 @@
 import numpy as np
-import cv2
+import os
 import torch
 from common_utils.graphics_utils import RenderDistance, ThickenLines, Depth2Pointscam              
 
+# Force OpenCV to ignore X11/Qt
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+import cv2
 
 def merge_similar(masks, image_rgb, color_thresh=50):
     avg_colors = []

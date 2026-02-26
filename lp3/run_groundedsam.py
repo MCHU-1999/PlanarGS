@@ -1,10 +1,13 @@
 import torch
 from PIL import Image
-import cv2
 import sys
 import os
 sys.path.append(os.path.join(os.getcwd(), "submodules/groundedsam/GroundingDINO"))
 sys.path.append(os.path.join(os.getcwd(), "submodules/groundedsam/segment_anything"))
+
+# Force OpenCV to ignore X11/Qt
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+import cv2
 
 # Grounding DINO
 import submodules.groundedsam.GroundingDINO.groundingdino.datasets.transforms as T
