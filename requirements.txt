@@ -1,7 +1,7 @@
 roma
 gradio
 matplotlib
-opencv-python
+# opencv-python
 scipy
 einops
 trimesh
