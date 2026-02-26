@@ -1,7 +1,6 @@
 import os
 import torch
 import numpy as np
-import cv2
 from PIL import Image
 from tqdm import tqdm
 from lp3.mask_refine import BoxSmaller, NormalSplit
@@ -15,6 +14,9 @@ from common_utils.graphics_utils import get_k
 from lp3.color_cluster import MaskDistance
 from planar.visualize import visualSegmask, visualMask
 
+# Force OpenCV to ignore X11/Qt
+os.environ["QT_QPA_PLATFORM"] = "offscreen"
+import cv2
 
 def draw_boxes(image, boxes, labels):
     """
