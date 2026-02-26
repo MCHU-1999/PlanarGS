@@ -131,7 +131,8 @@ if __name__ == "__main__":
     parser = ArgumentParser(description="LP3 script parameters")
     model = ModelParams(parser, sentinel=True)
     prp = PriorParams(parser)
-    parser.add_argument('-t', '--text_prompts', type=str, default="wall. floor. door. screen. window. ceiling. table")
+    # parser.add_argument('-t', '--text_prompts', type=str, default="wall. floor. door. screen. window. ceiling. table")
+    parser.add_argument('-t', '--text_prompts', type=str, default="wall. door. window. roof")
     parser.add_argument("--vis", action="store_true") 
     args = parser.parse_args()
                                                                                                                                                          
