@@ -44,7 +44,8 @@ def keep_or_wall(s):
 class GroundingDINO:
 
     def __init__(self, device):
-        self.config_file = "./submodules/groundedsam/GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py"
+        # self.config_file = "./submodules/groundedsam/GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py"
+        self.config_file = "/opt/submodules/groundedsam/GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py"
         
         self.box_threshold = 0.25
         self.text_threshold = 0.2
