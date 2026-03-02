@@ -126,6 +126,10 @@ def LoadGeomprior(geomprior_folder, image_name, resolution, device="cuda"):
     priornormal_path = os.path.join(geomprior_folder, "mono_normal", image_name + ".npy")
     print(f"{priordepth_path=}")
     print(f"{priornormal_path=}")
+    np_normal = np.load(priornormal_path)
+    print(f"Image type: {type(np_normal)}")
+    if np_normal is not None:
+        print(f"Image shape: {np_normal.shape}")
     priordepth = cv2.resize(np.load(priordepth_path), resolution, interpolation=cv2.INTER_NEAREST)
     priornormal = cv2.resize(np.load(priornormal_path), resolution, interpolation=cv2.INTER_NEAREST)
     return torch.from_numpy(priordepth).to(device), torch.from_numpy(priornormal).to(device)
