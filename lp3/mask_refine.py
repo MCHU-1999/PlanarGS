@@ -81,8 +81,15 @@ def NormalSplit(masks, pred_phrases, boxes_filt, normal, cluster, camdebug_folde
             boxes.append(boxes_filt[i])
 
     new_masks, new_pred, boxes = adjust_masks(new_masks, new_pred, boxes)
-    new_masks = torch.stack(new_masks).unsqueeze(1).bool()
 
+    # Handle the case where all masks are filtered out
+    if len(new_masks) == 0:
+        print(f"Warning: All masks filtered out in NormalSplit")
+        # Return empty tensors with correct shape
+        empty_masks = torch.empty((0, 1, masks.shape[2], masks.shape[3]), dtype=torch.bool, device=masks.device)
+        return empty_masks, [], torch.empty((0, 4), device=boxes_filt.device)
+    
+    new_masks = torch.stack(new_masks).unsqueeze(1).bool()
     return new_masks, new_pred, boxes
 
 
