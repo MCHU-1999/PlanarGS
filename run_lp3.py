@@ -98,6 +98,9 @@ def LP3(model, prp, text_prompts, vis, device="cuda"):   # Set vis=True to visua
         # Segmentation from boxes
         segmentation.load_image(file_path)
         masks = segmentation.get_segmentation_mask(boxes_filt)
+        if masks is None or masks.size(0) == 0:
+            print(f"Warning: No masks generated for {image_name}")
+            continue
         
         distance_mask = MaskDistance(depth, normal, inv_K, prp.dis_thresh)
         if prp.visdebug:
@@ -105,6 +108,10 @@ def LP3(model, prp, text_prompts, vis, device="cuda"):   # Set vis=True to visua
 
         masks = masks * distance_mask
         masks, pred_phrases, boxes_filt = NormalSplit(masks, pred_phrases, boxes_filt, normal, prp.normal_split, camdebug_folder)
+        if masks is None or len(masks) == 0:
+            # Handle empty results from NormalSplit
+            print(f"Warning: All masks filtered out for {image_name}")
+            continue
 
         masks_previous, pred_previous = FilterMask(masks, pred_phrases)
         add_previous = True
