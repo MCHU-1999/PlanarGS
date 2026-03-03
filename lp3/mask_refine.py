@@ -71,10 +71,8 @@ def NormalSplit(masks, pred_phrases, boxes_filt, normal, cluster, camdebug_folde
         mask = masks[i, 0]
         mask1, mask2 = MaxOverlap(mask, color_masks)
         new_mask = mask1 * mask
-
-        print(f"{new_mask.shape=}")
-        print(f"{type(new_mask)=}")
-
+        # print(f"{new_mask.shape=}")
+        # print(f"{type(new_mask)=}")
         new_masks.append(new_mask)
         new_pred.append(pred_phrases[i])
         boxes.append(boxes_filt[i])
