@@ -48,7 +48,7 @@ def draw_boxes(image, boxes, labels):
 
 def LP3(model, prp, text_prompts, vis, device="cuda"):   # Set vis=True to visualize boxes & masks.
     input_folder = model.source_path
-    output_folder = os.path.join(input_folder, "planarprior")    
+    output_folder = os.path.join(input_folder, "lp3")
     os.makedirs(output_folder, exist_ok=True)
     if prp.visdebug:
         debug_folder = os.path.join(output_folder, "debug")

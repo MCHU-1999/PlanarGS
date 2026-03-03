@@ -85,7 +85,7 @@ The data directory after preprocession should contain the following components t
     │   ├── resized_confs
     │   ├── prior_normal
     │   └── depth_weights.json
-    └── planarprior
+    └── lp3
         └── mask
 ```
 

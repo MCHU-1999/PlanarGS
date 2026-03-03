@@ -47,7 +47,7 @@ class Camera(nn.Module):
         image_path = os.path.join(path, "images", image_name[0] + image_name[1])
         geomprior_folder = os.path.join(path, "geomprior")
         depthconf_path = os.path.join(geomprior_folder, "resized_confs", image_name[0] + ".npy")
-        planarmask_path = os.path.join(path, "planarprior/mask", image_name[0] + ".npy")
+        planarmask_path = os.path.join(path, "lp3/mask", image_name[0] + ".npy")
         weights_path = os.path.join(geomprior_folder, "depth_weights.json")
 
         original_image = Image.open(image_path)
